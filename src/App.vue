@@ -1,43 +1,61 @@
 <template>
-  <div>
-    <h1>메일 서명 생성</h1>
+  <div class="wrap">
+    <h1>THE 51 메일 서명 생성</h1>
     <div class="valueForm">
-      <label for="name">이름 : </label>
-      <input type="text" id="name" v-model="name">
+      <div class="input_wrap">
+        <label for="name">이름</label>
+        <input type="text" id="name" v-model="name" placeholder="ex) 홍길동">
+      </div>
       <hr>
-      <label for="position">직책 : </label>
-      <input type="text" id="position" v-model="position">
+      <div class="input_wrap">
+        <label for="position">직책</label>
+        <input type="text" id="position" v-model="position" placeholder="ex) 사원">
+      </div>
       <hr>
-      <label for="rank">직급 : </label>
-      <input type="text" id="rank" v-model="rank">
+      <div class="input_wrap">
+        <label for="rank">직급</label>
+        <input type="text" id="rank" v-model="rank" placeholder="ex) 팀원">
+      </div>
       <hr>
-      <label for="team">부서 : </label>
-      <input type="text" id="team" v-model="team">
+      <div class="input_wrap">
+        <label for="team">부서</label>
+        <input type="text" id="team" v-model="team" placeholder="ex) DT Group">
+      </div>
       <hr>
-      <label for="number">번호 : </label>
-      <input type="text" id="number" v-model="number">
+      <div class="input_wrap">
+        <label for="number">번호</label>
+        <input type="text" id="number" v-model="number" placeholder="ex) 02.000.0000">
+      </div>
       <hr>
-      <label for="fax">팩스 : </label>
-      <input type="text" id="fax" v-model="fax">
+      <div class="input_wrap">
+        <label for="fax">팩스</label>
+        <input type="text" id="fax" v-model="fax" placeholder="ex) 02.000.0000">
+      </div>
       <hr>
-      <label for="pn">휴대폰번호 : </label>
-      <input type="text" id="pn" v-model="pn">
+      <div class="input_wrap">
+        <label for="pn">휴대폰번호</label>
+        <input type="text" id="pn" v-model="pn" placeholder="ex) 010.0000.0000">
+      </div>
       <hr>
-      <button @click="done">입력완료</button>
+      <div class="input_wrap">
+        <button @click="[done(), popup()]">입력완료</button>
+      </div>
     </div>
+    <hr>
     <div class="result">
+      <h2>미리보기</h2>
       <div class="table">
         <table style="padding: 0; border: none; background: #FFFFFF; font-size: 11pt;">
           <tr>
             <td cellspacing="0" cellpadding="0">
-              <span style="font-size: 1.13em; font-weight: 700; font-family: '맑은고딕', '나눔고딕', 'MS Gothic', 'AppleGothic'; line-height: 150%; color: #000000;">{{이름}}</span>
+              <span style="font-size: 1.13em; font-weight: 700; font-family: '맑은고딕', '나눔고딕', 'MS Gothic', 'AppleGothic'; line-height: 150%; color: #000000; display: inline-block; padding-right: 4px;">{{이름}}</span>
               <span style="font-size: 1.13em; font-weight: 700; font-family: '맑은고딕', '나눔고딕', 'MS Gothic', 'AppleGothic'; line-height: 150%; color: #000000;">{{직책}}</span><span style="display: inline-block; width: 0.06em;"></span><span style="display: inline-block; width: 0.25em; height: 0.25em; background-color: #E01728;"></span>
             </td>
           </tr>
           <tr style="height: 1.13em;">
             <td cellspacing="0" cellpadding="0">
               <span style="font-size: 0.69em; font-weight: 400; color: #575757; font-family: '맑은고딕', '나눔고딕', 'MS Gothic', 'AppleGothic'; vertical-align: middle; line-height: 150%;">{{직급}}</span>
-              <span style="display: inline-block; width: 0.19em; height: 0.19em; background-color: #BBBBBB; vertical-align: middle; border-radius: 100px;"></span>
+              <span style="display: inline-block; width: 0.19em; height: 0.19em; background-color: #BBBBBB; vertical-align: middle; border-radius: 100px; display: inline-block; margin: 0 4px;"></span>
               <span style="font-size: 0.69em; font-weight: 400; color: #575757; font-family: 'Tahoma'; vertical-align: middle; line-height: 150%;">{{부서}}</span>
             </td>
           </tr>
@@ -65,10 +83,15 @@
           </tr>
         </table>
       </div>
-      <div class="code">
-        <h2>여기에 나오는 코드를 복사해주세요</h2>
-      </div>
     </div>
+    <hr>
+    <div class="guide">
+      <h2>서명 설정 방법</h2>
+      <img src="../../guide.png">
+    </div>
+    <div class="popup">
+      코드 복사 완료<br>하단 설정 방법을 따라 서명을 등록해주세요
+  </div>
   </div>
 </template>
 
@@ -100,7 +123,6 @@ const done = () => {
   휴대폰번호.value = pn.value
 
   const code = `
-  아래 코드를 복사해주세요\n
   <table style="padding: 0; border: none; background: #FFFFFF; font-size: 11pt;">\n<tr>\n
       <td cellspacing="0" cellpadding="0">\n
         <span style="font-size: 1.13em; font-weight: 700; font-family: '맑은고딕', '나눔고딕', 'MS Gothic', 'AppleGothic'; line-height: 150%; color: #000000;">${이름.value}</span>\n
@@ -137,19 +159,86 @@ const done = () => {
       </td>\n
     </tr>\n
   </table>`
-  document.querySelector('.code').innerText = code
+
+  const copyContent = async () => {
+    try {
+      await navigator.clipboard.writeText(code);
+      console.log('Content copied to clipboard');
+    } catch (err) {
+      console.error('Failed to copy: ', err);
+    }
+  }
+
+  copyContent()
+}
+const popup = () => {
+  const popup = document.querySelector('.popup')
+  popup.style.display = 'block'
+  setTimeout(() => {
+    popup.style.display = 'none'
+  }, 5000);
 }
 </script>
 
 <style>
-.valueForm{
-  padding: 16px;
+.wrap {
+  width: 800px;
+  margin: 0 auto;
 }
-.result{
+h1, h2 {
+  text-align: center;
+}
+.valueForm {
+  margin-top: 40px;
+}
+.input_wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px;
+}
+input {
+  appearance: none;
+  width: 83%;
+  padding: 8px;
+  border: 1px solid gray;
+  border-radius: 6px;
+}
+button {
+  appearance: none;
+  border: none;
+  border-radius: 8px;
+  background: #E01728;
+  color: white;
+  width: 100%;
+  height: 34px;
+}
+.result {
   margin-top: 24px;
-  padding: 16px;
 }
-.table{
-  margin-bottom: 24px;
+.table {
+  width: fit-content;
+  margin: 0 auto;
+  margin-bottom: 36px;
+}
+.guide img {
+  width: 100%;
+}
+.popup {
+  display: none;
+  position: fixed;
+  bottom: 24px;
+  width: 768px;
+  background: #ffccd0;
+  padding: 16px;
+  text-align: center;
+  border-radius: 16px;
+  animation: popup 5s ease-in-out;
+}
+@keyframes popup {
+  0% { opacity: 0; bottom: -75px;}
+  30% { opacity: 1; bottom: 24px;}
+  70% { opacity: 1; bottom: 24px;}
+  100% { opacity: 0; bottom: -75px;}
 }
 </style>
