@@ -78,7 +78,7 @@
           </tr>
           <tr>
             <td style="padding: 0;" cellspacing="0" cellpadding="0">
-              <img src="../../logo.png" title="logo" alt="logo" width="100%" height="auto" style="display: block;">
+              <img src="../src/assets/logo.png" title="logo" alt="logo" width="100%" height="auto" style="display: block;">
             </td>
           </tr>
         </table>
@@ -87,7 +87,7 @@
     <hr>
     <div class="guide">
       <h2>서명 설정 방법</h2>
-      <img src="../../guide.png">
+      <img src="../src/assets/guide.png">
     </div>
     <div class="popup">
       코드 복사 완료<br>하단 설정 방법을 따라 서명을 등록해주세요
@@ -237,8 +237,8 @@ button {
 }
 @keyframes popup {
   0% { opacity: 0; bottom: -75px;}
-  30% { opacity: 1; bottom: 24px;}
-  70% { opacity: 1; bottom: 24px;}
+  15% { opacity: 1; bottom: 24px;}
+  85% { opacity: 1; bottom: 24px;}
   100% { opacity: 0; bottom: -75px;}
 }
 </style>
