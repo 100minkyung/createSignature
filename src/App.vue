@@ -49,12 +49,12 @@
           <tr>
             <td cellspacing="0" cellpadding="0">
               <span style="font-size: 1.13em; font-weight: 700; font-family: '맑은고딕', '나눔고딕', 'MS Gothic', 'AppleGothic'; line-height: 150%; color: #000000; display: inline-block; padding-right: 4px;">{{이름}}</span>
-              <span style="font-size: 1.13em; font-weight: 700; font-family: '맑은고딕', '나눔고딕', 'MS Gothic', 'AppleGothic'; line-height: 150%; color: #000000;">{{직책}}</span><span style="display: inline-block; width: 0.06em;"></span><span style="display: inline-block; width: 0.25em; height: 0.25em; background-color: #E01728;"></span>
+              <span style="font-size: 1.13em; font-weight: 700; font-family: '맑은고딕', '나눔고딕', 'MS Gothic', 'AppleGothic'; line-height: 150%; color: #000000;">{{직위}}</span><span style="display: inline-block; width: 0.06em;"></span><span style="display: inline-block; width: 0.25em; height: 0.25em; background-color: #E01728;"></span>
             </td>
           </tr>
           <tr style="height: 1.13em;">
             <td cellspacing="0" cellpadding="0">
-              <span style="font-size: 0.69em; font-weight: 400; color: #575757; font-family: '맑은고딕', '나눔고딕', 'MS Gothic', 'AppleGothic'; vertical-align: middle; line-height: 150%;">{{직급}}</span>
+              <span style="font-size: 0.69em; font-weight: 400; color: #575757; font-family: '맑은고딕', '나눔고딕', 'MS Gothic', 'AppleGothic'; vertical-align: middle; line-height: 150%;">{{직책}}</span>
               <span style="display: inline-block; width: 0.19em; height: 0.19em; background-color: #BBBBBB; vertical-align: middle; border-radius: 100px; display: inline-block; margin: 0 4px;"></span>
               <span style="font-size: 0.69em; font-weight: 400; color: #575757; font-family: 'Tahoma'; vertical-align: middle; line-height: 150%;">{{부서}}</span>
             </td>
@@ -106,8 +106,8 @@ const fax = ref('')
 const pn = ref('')
 
 const 이름 = ref()
+const 직위 = ref()
 const 직책 = ref()
-const 직급 = ref()
 const 부서 = ref()
 const 번호 = ref()
 const 팩스 = ref()
@@ -115,8 +115,8 @@ const 휴대폰번호 = ref()
 
 const done = () => {
   이름.value = name.value
-  직책.value = position.value
-  직급.value = rank.value
+  직위.value = position.value
+  직책.value = rank.value
   부서.value = team.value
   번호.value = number.value
   팩스.value = fax.value
@@ -126,12 +126,12 @@ const done = () => {
   <table style="padding: 0; border: none; background: #FFFFFF; font-size: 11pt;">\n<tr>\n
       <td cellspacing="0" cellpadding="0">\n
         <span style="font-size: 1.13em; font-weight: 700; font-family: '맑은고딕', '나눔고딕', 'MS Gothic', 'AppleGothic'; line-height: 150%; color: #000000;">${이름.value}</span>\n
-        <span style="font-size: 1.13em; font-weight: 700; font-family: '맑은고딕', '나눔고딕', 'MS Gothic', 'AppleGothic'; line-height: 150%; color: #000000;">${직책.value}</span><span style="display: inline-block; width: 0.06em;"></span><span style="display: inline-block; width: 0.25em; height: 0.25em; background-color: #E01728;"></span>\n
+        <span style="font-size: 1.13em; font-weight: 700; font-family: '맑은고딕', '나눔고딕', 'MS Gothic', 'AppleGothic'; line-height: 150%; color: #000000;">${직위.value}</span><span style="display: inline-block; width: 0.06em;"></span><span style="display: inline-block; width: 0.25em; height: 0.25em; background-color: #E01728;"></span>\n
       </td>\n
     </tr>\n
     <tr style="height: 1.13em;">\n
       <td cellspacing="0" cellpadding="0">\n
-        <span style="font-size: 0.69em; font-weight: 400; color: #575757; font-family: '맑은고딕', '나눔고딕', 'MS Gothic', 'AppleGothic'; vertical-align: middle; line-height: 150%;">${직급.value}</span>\n
+        <span style="font-size: 0.69em; font-weight: 400; color: #575757; font-family: '맑은고딕', '나눔고딕', 'MS Gothic', 'AppleGothic'; vertical-align: middle; line-height: 150%;">${직책.value}</span>\n
         <span style="display: inline-block; width: 0.19em; height: 0.19em; background-color: #BBBBBB; vertical-align: middle; border-radius: 100px;"></span>\n
         <span style="font-size: 0.69em; font-weight: 400; color: #575757; font-family: 'Tahoma'; vertical-align: middle; line-height: 150%;">${부서.value}</span>\n
       </td>\n
