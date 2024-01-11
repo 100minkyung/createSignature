@@ -8,12 +8,12 @@
       </div>
       <hr>
       <div class="input_wrap">
-        <label for="position">직책</label>
+        <label for="position">직위</label>
         <input type="text" id="position" v-model="position" placeholder="ex) 사원">
       </div>
       <hr>
       <div class="input_wrap">
-        <label for="rank">직급</label>
+        <label for="rank">직책</label>
         <input type="text" id="rank" v-model="rank" placeholder="ex) 팀원">
       </div>
       <hr>
